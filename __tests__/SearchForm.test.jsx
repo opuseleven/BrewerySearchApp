@@ -1,5 +1,6 @@
 import { render, fireEvent, screen } from '@testing-library/react';
 import { SearchForm } from '../components';
+import '@testing-library/jest-dom';
 
 describe('SearchForm component', () => {
 
@@ -10,7 +11,7 @@ describe('SearchForm component', () => {
 
   it('Renders', () => {
     render(<SearchForm setSearchTerm={setSearchTerm} />);
-    expect(screen.getByRole('button')).toBeDefined();
+    expect(screen.getByRole('button')).toHaveTextContent('Submit');
   })
 
   it('Sets the searchTerm variable', () => {
