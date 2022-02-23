@@ -1,9 +1,15 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import Image from 'next/image'
 import styles from '../styles/Home.module.css'
+import { Brewery } from '../types';
+import { useState } from 'react';
+import { SearchForm } from '../components';
 
 const Home: NextPage = () => {
+
+  const [breweries, setBreweries] = useState<Brewery[]>([]);
+  const [searchTerm, setSearchTerm] = useState('');
+
   return (
     <div className={styles.container}>
       <Head>
@@ -16,6 +22,10 @@ const Home: NextPage = () => {
         <h1 className={styles.title}>
           BrewerySearch
         </h1>
+
+        <div>
+          <SearchForm setSearchTerm={setSearchTerm} />
+        </div>
 
       </main>
 
