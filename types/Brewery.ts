@@ -1,5 +1,5 @@
 export interface Brewery {
-  obdb_id: string,
+  obdb_id: number,
   name: string,
   brewery_type: string,
   street: string,
