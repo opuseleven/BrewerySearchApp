@@ -20,7 +20,7 @@ function SearchForm({ setSearchTerm }) {
     <div>
       <form>
         <input {...searchInput} />
-        <button onClick={setSearchTerm(searchInput.value)}>Submit</button>
+        <button onClick={() => setSearchTerm(searchInput.value)}>Submit</button>
       </form>
     </div>
   )
