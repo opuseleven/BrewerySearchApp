@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import styles from '../styles/Components.module.css';
 
 function SearchForm({ handleSearchClick, setBreweries }) {
 
@@ -17,10 +18,10 @@ function SearchForm({ handleSearchClick, setBreweries }) {
   const searchInput = useField('text');
 
   return (
-    <div>
-      <form>
+    <div className={styles.searchformcontainer}>
+      <form className={styles.searchform} onSubmit={() => handleSearchClick(searchInput.value, setBreweries)}>
         <input {...searchInput} />
-        <button onClick={() => handleSearchClick(searchInput.value, setBreweries)}>Submit</button>
+        <button className={styles.submitbutton} >Submit</button>
       </form>
     </div>
   )
