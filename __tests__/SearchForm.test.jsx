@@ -1,28 +1,30 @@
 import { render, fireEvent, screen } from '@testing-library/react';
 import { SearchForm } from '../components';
 import '@testing-library/jest-dom';
+import { handleSearchClick } from '../services';
 
 describe('SearchForm component', () => {
 
-  let searchTerm = '';
-  function setSearchTerm(s) {
-    searchTerm = s;
+  let breweries = '';
+  function setBreweries(b) {
+    breweries = b;
   }
 
   it('Renders', () => {
-    render(<SearchForm setSearchTerm={setSearchTerm} />);
+    render(<SearchForm />);
     expect(screen.getByRole('button')).toHaveTextContent('Submit');
   })
 
-  it('Sets the searchTerm variable', () => {
-    render(<SearchForm setSearchTerm={setSearchTerm} />);
+  it('Sets the Breweries Array', async () => {
+    render(<SearchForm setBreweries={setBreweries} handleSearchClick={handleSearchClick} />);
     fireEvent.change(screen.getByRole('textbox'), {
       target: {
-        value: "test"
+        value: "Nashville"
       }
     });
     fireEvent.click(screen.getByRole('button'));
-    expect(searchTerm).toBe('test');
+    await new Promise(r => setTimeout(r, 3000));
+    expect(breweries.length).toBeGreaterThan(1);
   })
 
 })
