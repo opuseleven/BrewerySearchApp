@@ -1,0 +1,28 @@
+.searchformcontainer {
+  padding: 20px;
+  display: flex;
+  flex-direction: row;
+}
+
+.searchform {
+  padding-bottom: 20px;
+}
+
+.submitbutton {
+  color: black;
+
+}
+
+.renderbrewerycontainer {
+  border-style: solid;
+  border-color: white;
+  border-radius: 20px;
+  margin: 20px;
+}
+
+.renderbrewerycontainer a{
+  color: white;
+}
+.renderbrewerycontainer a:hover {
+  color: yellow;
+}
