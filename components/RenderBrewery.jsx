@@ -1,10 +1,12 @@
+import styles from '../styles/Components.module.css';
+
 function RenderBrewery({ brewery }) {
 
   return (
     <div>
     {
       brewery && (
-        <div key={brewery.obdb_id}>
+        <div className={styles.renderbrewerycontainer} key={brewery.obdb_id}>
           <h3>{brewery.name}</h3>
           <p>Brewery Type: {brewery.brewery_type}</p>
           <p>{brewery.street}</p>
