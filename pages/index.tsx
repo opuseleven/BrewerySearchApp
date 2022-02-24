@@ -3,12 +3,12 @@ import Head from 'next/head'
 import styles from '../styles/Home.module.css'
 import { Brewery } from '../types';
 import { useState } from 'react';
-import { SearchForm } from '../components';
+import { SearchForm, RenderBrewery } from '../components';
+import { handleSearchClick } from '../services';
 
 const Home: NextPage = () => {
 
   const [breweries, setBreweries] = useState<Brewery[]>([]);
-  const [searchTerm, setSearchTerm] = useState('');
 
   return (
     <div className={styles.container}>
@@ -24,7 +24,13 @@ const Home: NextPage = () => {
         </h1>
 
         <div>
-          <SearchForm setSearchTerm={setSearchTerm} />
+          <SearchForm handleSearchClick={handleSearchClick} setBreweries={setBreweries} />
+        </div>
+
+        <div>
+          {breweries.map(b => {
+            <RenderBrewery brewery={b} />
+          })}
         </div>
 
       </main>
