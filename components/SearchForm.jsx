@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-function SearchForm({ setSearchTerm }) {
+function SearchForm({ handleSearchClick, setBreweries }) {
 
   function useField(type) {
     const [value, setValue] = useState('');
@@ -20,7 +20,7 @@ function SearchForm({ setSearchTerm }) {
     <div>
       <form>
         <input {...searchInput} />
-        <button onClick={() => setSearchTerm(searchInput.value)}>Submit</button>
+        <button onClick={() => handleSearchClick(searchInput.value, setBreweries)}>Submit</button>
       </form>
     </div>
   )
