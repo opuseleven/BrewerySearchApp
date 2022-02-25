@@ -4,7 +4,7 @@ import styles from '../styles/Home.module.css'
 import { Brewery } from '../types';
 import { useState, useEffect } from 'react';
 import { SearchForm, RenderBrewery } from '../components';
-import { handleSearchClick, useField, getBrewery, renderBrewery } from '../services';
+import { handleSearchClick, useField } from '../services';
 
 const Home: NextPage = () => {
 
@@ -38,10 +38,7 @@ const Home: NextPage = () => {
 
         <div>
           <div className={styles.searchformcontainer}>
-            <form className={styles.searchform} onSubmit={handleClick}>
-              <input {...searchInput} />
-              <button className={styles.submitbutton} >Submit</button>
-            </form>
+            <SearchForm setBreweries={setBreweries} />
           </div>
         </div>
 
