@@ -15,11 +15,15 @@ function RenderBrewery({ brewery }) {
     {
       brewery && (
         <div className={styles.renderbrewerycontainer} key={key}>
-          <h3>{name}</h3>
-          <p>Brewery Type: {type}</p>
-          <p>{street}</p>
-          <p>{city}, {state}</p>
-          <p><a href={url}>{url}</a></p>
+          <div className={styles.renderbrewerycontents}>
+            <h3>{name}</h3>
+            <div className={styles.brewerydetails}>
+              <p className={styles.detailtype}>Brewery Type: {type}</p>
+              <p>{street}</p>
+              <p>{city}, {state}</p>
+              <p><a href={url}>{url}</a></p>
+            </div>
+          </div>
         </div>
       )
     }
