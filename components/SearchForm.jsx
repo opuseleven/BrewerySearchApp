@@ -1,3 +1,5 @@
+// maybe i'm dumb but i don't know why this component doesn't work
+
 import { useState } from 'react';
 import styles from '../styles/Components.module.css';
 
