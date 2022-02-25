@@ -1,9 +1,8 @@
-// maybe i'm dumb but i don't know why this component doesn't work
-
 import { useState } from 'react';
 import styles from '../styles/Components.module.css';
+import { handleSearchClick } from '../services';
 
-function SearchForm({ handleSearchClick, setBreweries }) {
+function SearchForm({ setBreweries }) {
 
   function useField(type) {
     const [value, setValue] = useState('');
@@ -17,11 +16,16 @@ function SearchForm({ handleSearchClick, setBreweries }) {
     }
   }
 
+  const handleClick = (e) => {
+    e.preventDefault();
+    handleSearchClick(searchInput.value, setBreweries);
+  }
+
   const searchInput = useField('text');
 
   return (
     <div className={styles.searchformcontainer}>
-      <form className={styles.searchform} onSubmit={() => handleSearchClick(searchInput.value, setBreweries)}>
+      <form className={styles.searchform} onSubmit={handleClick}>
         <input {...searchInput} />
         <button className={styles.submitbutton} >Submit</button>
       </form>
