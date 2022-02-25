@@ -19,6 +19,10 @@ const Home: NextPage = () => {
     setDisplayedBreweries(breweries);
   }
 
+  useEffect(() => {
+    setDisplayedBreweries(breweries);
+  }, [breweries]);
+
   return (
     <div className={styles.container}>
       <Head>
