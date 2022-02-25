@@ -20,6 +20,12 @@
   border-radius: 20px;
   margin: 20px;
 }
+.renderbrewerycontainer a{
+  color: white;
+}
+.renderbrewerycontainer a:hover {
+  color: yellow;
+}
 
 .renderbrewerycontents {
   padding: 16px;
@@ -31,11 +37,4 @@
 
 .detailtype {
   text-transform: capitalize;
-}
-
-.renderbrewerycontainer a{
-  color: white;
-}
-.renderbrewerycontainer a:hover {
-  color: yellow;
 }
