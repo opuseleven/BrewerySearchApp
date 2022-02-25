@@ -28,7 +28,7 @@ const Home: NextPage = () => {
         </h1>
 
         <div>
-          <div className={styles.searchformcontainer}>
+          <div>
             <SearchForm setBreweries={setBreweries} />
           </div>
         </div>
