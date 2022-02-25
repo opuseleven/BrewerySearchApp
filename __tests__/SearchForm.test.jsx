@@ -16,7 +16,7 @@ describe('SearchForm component', () => {
   })
 
   it('Sets the Breweries Array', async () => {
-    render(<SearchForm setBreweries={setBreweries} handleSearchClick={handleSearchClick} />);
+    render(<SearchForm setBreweries={setBreweries} />);
     fireEvent.change(screen.getByRole('textbox'), {
       target: {
         value: "Nashville"
