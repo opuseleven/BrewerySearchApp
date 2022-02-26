@@ -13,6 +13,7 @@ describe('StateSelector component', () => {
     render(<StateSelector />);
     const options = screen.getAllByRole('option');
     expect(options[0]).toHaveTextContent('--select state--');
+    expect(options[1]).toHaveTextContent('Alabama');
   })
 
   it('Changes state value', () => {
