@@ -3,12 +3,15 @@ import Head from 'next/head'
 import styles from '../styles/Home.module.css'
 import { Brewery } from '../types';
 import { useState, useEffect } from 'react';
-import { SearchForm, RenderBrewery } from '../components';
+import { SearchForm, RenderBrewery, Filters } from '../components';
 
 const Home: NextPage = () => {
 
   const [breweries, setBreweries] = useState<Brewery[]>([]);
   const [displayedBreweries, setDisplayedBreweries] = useState<Brewery[]>([]);
+  const [showFilters, setShowFilters] = useState(false);
+  const [typeFilter, setTypeFilter] = useState('');
+  const [stateFilter, setStateFilter] = useState('');
 
   useEffect(() => {
     setDisplayedBreweries(breweries);
@@ -30,6 +33,16 @@ const Home: NextPage = () => {
         <div>
           <div>
             <SearchForm setBreweries={setBreweries} />
+          </div>
+          <div>
+            <div>
+              <button onClick={() => setShowFilters(!showFilters)}>Filters</button>
+            </div>
+            {
+              showFilters && (
+                <Filters setStateFilter={setStateFilter} setTypeFilter={setTypeFilter} />
+              )
+            }
           </div>
         </div>
 
