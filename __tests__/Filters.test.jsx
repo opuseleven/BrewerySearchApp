@@ -27,10 +27,10 @@ describe('Filters component', () => {
     fireEvent.change(boxes[0], {target: {value: "colorado"}});
     expect(boxes[0].value).toBe('colorado');
     expect(state).toBe('colorado');
-    fireEvent.change(boxes[1], {target: {value: "microbrewery"}});
+    fireEvent.change(boxes[1], {target: {value: "micro"}});
     expect(boxes[0].value).toBe('colorado');
-    expect(boxes[1].value).toBe('microbrewery');
-    expect(type).toBe('microbrewery');
+    expect(boxes[1].value).toBe('micro');
+    expect(type).toBe('micro');
   })
 
 })
