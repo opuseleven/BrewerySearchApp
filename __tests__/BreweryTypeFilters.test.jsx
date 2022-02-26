@@ -35,9 +35,7 @@ describe('BreweryTypeFilters component', () => {
   it('Changes state with checkbox', () => {
     render(<BreweryTypeFilters typeFilters={typeFilterState} setMicroState={setMicroState} setBrewpubState={setBrewpubState} setContractState={setContractState} setLargeState={setLargeState} setRegionalState={setRegionalState} />);
     const checkboxes = screen.getAllByRole('checkbox');
-    console.log(typeFilterState);
     fireEvent.click(checkboxes[0]);
-    console.log(typeFilterState);
     expect(typeFilterState.micro).toBe(true);
     fireEvent.click(checkboxes[1]);
     expect(typeFilterState.brewpub).toBe(true);
