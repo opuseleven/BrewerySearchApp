@@ -15,6 +15,16 @@ const Home: NextPage = () => {
 
   useEffect(() => {
     setDisplayedBreweries(breweries);
+    if (showFilters) {
+      if (stateFilter !== '') {
+        const stateFiltered = displayedBreweries.filter(brewery => brewery.state.toLowerCase() === stateFilter);
+        setDisplayedBreweries(stateFiltered);
+      }
+      if (typeFilter !== '') {
+        const typeFiltered = displayedBreweries.filter(brewery => brewery.brewery_type.toLowerCase() === typeFilter);
+        setDisplayedBreweries(typeFiltered);
+      }
+    }
   }, [breweries]);
 
   return (
