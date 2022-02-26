@@ -8,9 +8,13 @@ function BreweryTypeSelector({ setTypeFilter }) {
 
   return (
     <div className={styles.typeselectorcontainer}>
-      <select defaultValue="--select type--" onChange={handleChange}>
-        <option value="--select type--">--select type--</option>
-        <option value="microbrewery">Microbrewery</option>
+      <select defaultValue="" onChange={handleChange}>
+        <option value="">--select type--</option>
+        <option value="micro">Microbrewery</option>
+        <option value="brewpub">Brewpub</option>
+        <option value="contract">Contract</option>
+        <option value="large">Large</option>
+        <option value="regional">Regional</option>
       </select>
     </div>
   )
