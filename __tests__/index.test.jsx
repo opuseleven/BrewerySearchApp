@@ -6,6 +6,8 @@ describe('Home Page', () => {
 
   it('Renders', () => {
     render(<Home />);
-    expect(screen.getByRole('button')).toHaveTextContent('Submit');
+    const buttons = screen.getAllByRole('button');
+    expect(buttons[0]).toHaveTextContent('Submit');
+    expect(buttons[1]).toHaveTextContent('Filter');
   })
 })
