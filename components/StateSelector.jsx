@@ -8,8 +8,8 @@ function StateSelector({ setStateFilter }) {
 
   return (
     <div className={styles.statefilter}>
-      <select defaultValue="--select state--" onChange={handleChange}>
-        <option value="--select state--">--select state--</option>
+      <select defaultValue="" onChange={handleChange}>
+        <option value="">--select state--</option>
         <option value="alabama">Alabama</option>
         <option value="alaska">Alaska</option>
         <option value="arizona">Arizona</option>
