@@ -4,7 +4,7 @@ import { BreweryTypeSelector } from '../components';
 
 describe('BreweryTypeSelector component', () => {
 
-  let type = '--select type--';
+  let type = '';
   function setType(s) {
     type = s;
   }
@@ -13,12 +13,13 @@ describe('BreweryTypeSelector component', () => {
     render(<BreweryTypeSelector setTypeFilter={setType} />);
     const options = screen.getAllByRole('option');
     expect(options[0]).toHaveTextContent('--select type--');
+    expect(options[1]).toHaveTextContent('Microbrewery');
   })
 
   it('Changes type value', () => {
     render(<BreweryTypeSelector setTypeFilter={setType} />);
     const selector = screen.getByRole('combobox');
-    fireEvent.change(selector, {target: {value: "microbrewery"}});
-    expect(type).toBe('microbrewery');
+    fireEvent.change(selector, {target: {value: "micro"}});
+    expect(type).toBe('micro');
   })
 })
