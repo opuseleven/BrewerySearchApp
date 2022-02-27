@@ -1,29 +1,48 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
-import { Brewery } from '../types';
+import { Brewery, TypeFilterState } from '../types';
 import { useState, useEffect } from 'react';
 import { SearchForm, RenderBrewery, Filters } from '../components';
+import { filterByType, typeFilterCheck } from '../services';
 
 const Home: NextPage = () => {
 
   const [breweries, setBreweries] = useState<Brewery[]>([]);
   const [displayedBreweries, setDisplayedBreweries] = useState<Brewery[]>([]);
   const [showFilters, setShowFilters] = useState(false);
-  const [typeFilter, setTypeFilter] = useState('');
+
+  const defaultTypeFilter: TypeFilterState = {
+    micro: false,
+    brewpub: false,
+    contract: false,
+    large: false,
+    regional: false
+  }
+
+  const [typeFilterState, setTypeFilterState] = useState<TypeFilterState>(defaultTypeFilter);
   const [stateFilter, setStateFilter] = useState('');
 
   useEffect(() => {
-    setDisplayedBreweries(breweries);
+    const originalArray = breweries;
     if (showFilters) {
       if (stateFilter !== '') {
-        const stateFiltered = displayedBreweries.filter(brewery => brewery.state.toLowerCase() === stateFilter);
+        const stateFiltered = originalArray.filter(brewery => brewery.state.toLowerCase() === stateFilter);
         setDisplayedBreweries(stateFiltered);
+        if (typeFilterState !== defaultTypeFilter) {
+          const typeFiltered = filterByType(typeFilterState, stateFiltered);
+          setDisplayedBreweries(typeFiltered);
+        }
+      } else {
+        if (typeFilterCheck(typeFilterState)) {
+          const typeFiltered = filterByType(typeFilterState, originalArray);
+          setDisplayedBreweries(typeFiltered);
+        } else {
+          setDisplayedBreweries(originalArray);
+        }
       }
-      if (typeFilter !== '') {
-        const typeFiltered = displayedBreweries.filter(brewery => brewery.brewery_type.toLowerCase() === typeFilter);
-        setDisplayedBreweries(typeFiltered);
-      }
+    } else {
+      setDisplayedBreweries(originalArray);
     }
   }, [breweries]);
 
@@ -50,7 +69,7 @@ const Home: NextPage = () => {
             </div>
             {
               showFilters && (
-                <Filters setStateFilter={setStateFilter} setTypeFilter={setTypeFilter} />
+                <Filters setStateFilter={setStateFilter} typeFilterState={typeFilterState} setTypeFilterState={setTypeFilterState} />
               )
             }
           </div>
