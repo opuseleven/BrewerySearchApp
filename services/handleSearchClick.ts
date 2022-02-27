@@ -13,6 +13,7 @@ function handleSearchClick(searchTerm: string, setBreweries: React.Dispatch<Reac
 
   const requestUrl = options.url + "?query=" + options.params.query;
   const testUrl = 'api/breweries';
+  // testUrl gets full list of breweries from breweries.json
 
   axios
     .get<Brewery[]>(requestUrl)
