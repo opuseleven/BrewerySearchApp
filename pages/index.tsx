@@ -3,7 +3,7 @@ import Head from 'next/head'
 import styles from '../styles/Home.module.css'
 import { Brewery, TypeFilterState } from '../types';
 import { useState, useEffect } from 'react';
-import { SearchForm, RenderBrewery, Filters } from '../components';
+import { SearchForm, RenderBrewery, Filters, ListMapSwitch } from '../components';
 import { filterByType, typeFilterCheck } from '../services';
 
 const Home: NextPage = () => {
@@ -11,6 +11,7 @@ const Home: NextPage = () => {
   const [breweries, setBreweries] = useState<Brewery[]>([]);
   const [displayedBreweries, setDisplayedBreweries] = useState<Brewery[]>([]);
   const [showFilters, setShowFilters] = useState(false);
+  const [showMap, setShowMap] = useState(false);
 
   const defaultTypeFilter: TypeFilterState = {
     micro: false,
@@ -73,6 +74,15 @@ const Home: NextPage = () => {
               )
             }
           </div>
+          <ListMapSwitch setShowMap={setShowMap} />
+        </div>
+
+        <div>
+          {
+            showMap && (
+              <MapContainer />
+            )
+          }
         </div>
 
         <div>
