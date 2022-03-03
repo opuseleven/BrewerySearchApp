@@ -1,12 +1,13 @@
 import styles from '../styles/Components.module.css';
 import { useState } from 'react';
 
-function ListMapSwitch() {
+function ListMapSwitch({ setShowMap }) {
 
-  const [list, setList] = useState(false);
+  const [map, setMap] = useState(false);
 
   function handleCheckbox() {
-    setList(!list);
+    setShowMap(!map);
+    setMap(!map);
   }
 
   return (
