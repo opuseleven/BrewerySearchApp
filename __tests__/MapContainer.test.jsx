@@ -5,7 +5,7 @@ describe('MapContainer component', () => {
 
   it('Component renders', () => {
     render(<MapContainer center={[-86.767960,36.174465]} />);
-    const map = screen.getByRole('heading');
+    const map = screen.getByRole('map');
     expect(map).toBeDefined();
   })
 })

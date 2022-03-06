@@ -6,7 +6,7 @@ function MapContainer({ center }) {
   const accessToken = 'pk.eyJ1Ijoib3B1c2VsZXZlbiIsImEiOiJja3R4Zzlkem0ydHF6MnBvM2p2b211cXpmIn0.wf4TNUb_e9A8namFw9ojQA'
 
   return (
-    <div>
+    <div role="map">
       <Map
         initialViewState={{
           longitude: -122.4,
