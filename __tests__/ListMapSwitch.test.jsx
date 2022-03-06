@@ -1,10 +1,22 @@
 import { ListMapSwitch } from '../components';
-import { render, screen } from '@testing-library/react';
+import { render, fireEvent, screen } from '@testing-library/react';
+import '@testing-library/jest-dom';
 
 describe('ListMapSwitch component', () => {
 
+  let showMap = false;
+  function setShowMap(bool) {
+    showMap = bool;
+  }
+
   it('Component renders', () => {
-    render(<ListMapSwitch />);
-    expect(screen.getByRole('checkbox')).toBeDefined();
+    render(<ListMapSwitch showMap={showMap} setShowMap={setShowMap} />);
+    expect(screen.getByRole('button')).toHaveTextContent("Show Map");
+  })
+
+  it('Sets the showMap variable', () => {
+    render(<ListMapSwitch showMap={showMap} setShowMap={setShowMap} />);
+    fireEvent.click(screen.getByRole('button'));
+    expect(showMap).toBe(true);
   })
 })
