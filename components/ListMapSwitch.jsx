@@ -12,7 +12,7 @@ function ListMapSwitch({ setShowMap }) {
 
   return (
     <div>
-      <input type="checkbox" id="checkbox-input" onChange={handleCheckbox} className={styles.checkboxinput} />
+      <input type="checkbox" id="checkbox-input" onChange={handleCheckbox} />
       <label htmlFor="checkbox-input" className={styles.roundslidercontainer}>
         <div>List</div>
         <div>Map</div>
