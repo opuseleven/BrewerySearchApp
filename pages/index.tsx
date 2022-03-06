@@ -3,7 +3,7 @@ import Head from 'next/head'
 import styles from '../styles/Home.module.css'
 import { Brewery, TypeFilterState } from '../types';
 import { useState, useEffect } from 'react';
-import { SearchForm, RenderBrewery, Filters, ListMapSwitch } from '../components';
+import { SearchForm, RenderBrewery, Filters, ListMapSwitch, MapContainer } from '../components';
 import { filterByType, typeFilterCheck } from '../services';
 
 const Home: NextPage = () => {
@@ -53,6 +53,10 @@ const Home: NextPage = () => {
         <title>BrewerySearch</title>
         <meta name="description" content="Search a database of breweries" />
         <link rel="icon" href="/favicon.ico" />
+        <link
+          href="https://api.mapbox.com/mapbox-gl-js/v1.10.1/mapbox-gl.css"
+          rel="stylesheet"
+          />
       </Head>
 
       <main className={styles.main}>
@@ -80,7 +84,7 @@ const Home: NextPage = () => {
         <div>
           {
             showMap && (
-              <MapContainer />
+              <MapContainer center={[-86.767960,36.174465]} />
             )
           }
         </div>
