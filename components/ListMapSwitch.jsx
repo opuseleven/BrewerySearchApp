@@ -1,23 +1,30 @@
 import styles from '../styles/Components.module.css';
 import { useState } from 'react';
 
-function ListMapSwitch({ setShowMap }) {
+function ListMapSwitch({ showMap, setShowMap }) {
 
-  const [map, setMap] = useState(false);
+  const [map, setMap] = useState(showMap);
+  const [status, setStatus] = useState(getStatus(map));
 
   function handleCheckbox() {
     setShowMap(!map);
+    setStatus(getStatus(!map));
     setMap(!map);
+  }
+
+  function getStatus(bool) {
+    if (bool) {
+      return "Hide";
+    } else {
+      return "Show";
+    }
   }
 
   return (
     <div>
-      <input type="checkbox" id="checkbox-input" onChange={handleCheckbox} />
-      <label htmlFor="checkbox-input" className={styles.roundslidercontainer}>
-        <div>List</div>
-        <div>Map</div>
-        <div className={styles.roundslider}></div>
-      </label>
+      <button onClick={handleCheckbox}>
+        {status} Map
+      </button>
     </div>
   )
 }
