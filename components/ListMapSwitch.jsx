@@ -21,7 +21,7 @@ function ListMapSwitch({ showMap, setShowMap }) {
   }
 
   return (
-    <div>
+    <div className={styles.mapbutton}>
       <button onClick={handleCheckbox}>
         {status} Map
       </button>
