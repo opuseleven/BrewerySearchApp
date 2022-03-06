@@ -78,7 +78,7 @@ const Home: NextPage = () => {
               )
             }
           </div>
-          <ListMapSwitch setShowMap={setShowMap} />
+          <ListMapSwitch showMap={showMap} setShowMap={setShowMap} />
         </div>
 
         <div>
