@@ -6,6 +6,6 @@ export interface Brewery {
   city: string,
   state: string,
   website_url: string,
-  longitude?: number,
-  latitude?: number
+  longitude: number,
+  latitude: number
 }
