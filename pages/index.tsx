@@ -4,7 +4,7 @@ import styles from '../styles/Home.module.css'
 import { Brewery, TypeFilterState } from '../types';
 import { useState, useEffect } from 'react';
 import { SearchForm, RenderBrewery, Filters, ListMapSwitch, MapContainer } from '../components';
-import { filterByType, typeFilterCheck } from '../services';
+import { filterByType, typeFilterCheck, filterByHasCoordinates } from '../services';
 
 const Home: NextPage = () => {
 
@@ -45,7 +45,10 @@ const Home: NextPage = () => {
     } else {
       setDisplayedBreweries(originalArray);
     }
-  }, [breweries]);
+    if (showMap) {
+      setDisplayedBreweries(filterByHasCoordinates(displayedBreweries));
+    }
+  }, [breweries, showMap]);
 
   return (
     <div className={styles.container}>
@@ -80,7 +83,7 @@ const Home: NextPage = () => {
         <div>
           {
             showMap && (
-              <MapContainer center={[-86.767960,36.174465]} />
+              <MapContainer arr={displayedBreweries} />
             )
           }
         </div>
