@@ -9,6 +9,10 @@ describe('SearchForm component', () => {
   function setBreweries(b) {
     breweries = b;
   }
+  let showMap = true;
+  function setShowMap(bool) {
+    showMap = bool;
+  }
 
   it('Renders', () => {
     render(<SearchForm />);
@@ -16,7 +20,7 @@ describe('SearchForm component', () => {
   })
 
   it('Sets the Breweries Array', async () => {
-    render(<SearchForm setBreweries={setBreweries} />);
+    render(<SearchForm setBreweries={setBreweries} setShowMap={setShowMap} />);
     fireEvent.change(screen.getByRole('textbox'), {
       target: {
         value: "Nashville"
