@@ -1,5 +1,5 @@
 import styles from '../styles/Components.module.css';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 function ListMapSwitch({ showMap, setShowMap }) {
 
@@ -19,6 +19,11 @@ function ListMapSwitch({ showMap, setShowMap }) {
       return "Show";
     }
   }
+
+  useEffect(() => {
+    setMap(showMap);
+    setStatus(getStatus(showMap));
+  }, [showMap])
 
   return (
     <div className={styles.mapbutton}>
