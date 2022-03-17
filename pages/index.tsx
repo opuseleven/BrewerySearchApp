@@ -65,7 +65,7 @@ const Home: NextPage = () => {
 
         <div>
           <div>
-            <SearchForm setBreweries={setBreweries} />
+            <SearchForm setBreweries={setBreweries} setShowMap={setShowMap} />
           </div>
           <div>
             <div>
