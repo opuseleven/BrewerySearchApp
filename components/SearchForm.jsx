@@ -2,7 +2,7 @@ import { useState } from 'react';
 import styles from '../styles/Components.module.css';
 import { handleSearchClick } from '../services';
 
-function SearchForm({ setBreweries }) {
+function SearchForm({ setBreweries, setShowMap }) {
 
   function useField(type) {
     const [value, setValue] = useState('');
@@ -18,6 +18,7 @@ function SearchForm({ setBreweries }) {
 
   const handleClick = (e) => {
     e.preventDefault();
+    setShowMap(false);
     handleSearchClick(searchInput.value, setBreweries);
   }
 
