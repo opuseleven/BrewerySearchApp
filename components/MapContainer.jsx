@@ -1,4 +1,5 @@
-import Map, { Marker } from 'react-map-gl';
+import Map from 'react-map-gl';
+import { RenderBreweryMap } from '.';
 import 'mapbox-gl/dist/mapbox-gl.css';
 
 function MapContainer({ arr }) {
@@ -24,7 +25,7 @@ function MapContainer({ arr }) {
         {
           arr && (
             arr.map(b => (
-              <Marker longitude={b.longitude} latitude={b.latitude} color="red" />
+              <RenderBreweryMap brewery={b} />
             ))
           )
         }
