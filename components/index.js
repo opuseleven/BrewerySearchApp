@@ -7,3 +7,4 @@ export * from './BreweryTypeFilters';
 export * from './ListMapSwitch';
 export * from './MapContainer';
 export * from './RenderBreweryMap';
+export * from './RenderPopup';
