@@ -1,22 +1,25 @@
 import { useState } from 'react';
-import { Marker, Popup } from 'react-map-gl';
+import { Marker } from 'react-map-gl';
+import { RenderPopup } from './';
 
 function RenderBreweryMap({ brewery }) {
 
   const [showPopup, setShowPopup] = useState(false);
 
+  function handleClick() {
+    setShowPopup(!showPopup);
+    // setSelectedBrewery()
+  }
+
   return (
     <div>
       {
         showPopup && (
-          <Popup
-            longitude={brewery.longitude}
-            latitude={brewery.latitude}
-            anchor="top"
-            onClose={() => setShowPopup(false)}
-            >
-            {brewery.name}
-          </Popup>
+          <RenderPopup
+            brewery={brewery}
+            showPopup={showPopup}
+            setShowPopup={setShowPopup}
+          />
         )
       }
       <Marker
