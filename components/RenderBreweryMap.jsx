@@ -1,14 +1,15 @@
 import { useState } from 'react';
 import { Marker } from 'react-map-gl';
 import { RenderPopup } from './';
+import styles from '../styles/Components.module.css';
 
-function RenderBreweryMap({ brewery }) {
+function RenderBreweryMap({ brewery, setSelectedBrewery }) {
 
   const [showPopup, setShowPopup] = useState(false);
 
   function handleClick() {
     setShowPopup(!showPopup);
-    // setSelectedBrewery()
+    setSelectedBrewery(brewery);
   }
 
   return (
@@ -23,10 +24,13 @@ function RenderBreweryMap({ brewery }) {
         )
       }
       <Marker
+        key={brewery.obdb_id}
         longitude={brewery.longitude}
         latitude={brewery.latitude}
         color="red"
-        onClick={() => setShowPopup(!showPopup)} />
+        style={{ cursor: 'pointer' }}
+        onClick={() => handleClick()}
+      />
     </div>
   )
 }
