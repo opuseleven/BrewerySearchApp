@@ -1,4 +1,4 @@
-import { render, fireEvent, screen } from '@testing-library/react';
+import { render, fireEvent, screen, act } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import { BreweryTypeSelector } from '../components';
 
@@ -19,7 +19,9 @@ describe('BreweryTypeSelector component', () => {
   it('Changes type value', () => {
     render(<BreweryTypeSelector setTypeFilter={setType} />);
     const selector = screen.getByRole('combobox');
-    fireEvent.change(selector, {target: {value: "micro"}});
+    act(() => {
+      fireEvent.change(selector, {target: {value: "micro"}});
+    })
     expect(type).toBe('micro');
   })
 })

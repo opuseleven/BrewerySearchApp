@@ -1,4 +1,4 @@
-import { render, fireEvent, screen } from '@testing-library/react';
+import { render, fireEvent, screen, act } from '@testing-library/react';
 import { SearchForm } from '../components';
 import '@testing-library/jest-dom';
 import { handleSearchClick } from '../services';
@@ -21,12 +21,18 @@ describe('SearchForm component', () => {
 
   it('Sets the Breweries Array', async () => {
     render(<SearchForm setBreweries={setBreweries} setShowMap={setShowMap} />);
-    fireEvent.change(screen.getByRole('textbox'), {
-      target: {
-        value: "Nashville"
-      }
-    });
-    fireEvent.click(screen.getByRole('button'));
+    const textbox = screen.getByRole('textbox');
+    const button = screen.getByRole('button');
+    act(() => {
+      fireEvent.change(textbox, {
+        target: {
+          value: "Nashville"
+        }
+      });
+    })
+    act(() => {
+      fireEvent.click(button);
+    })
     await new Promise(r => setTimeout(r, 3000));
     expect(breweries.length).toBeGreaterThan(1);
   })

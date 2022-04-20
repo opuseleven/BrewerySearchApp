@@ -1,5 +1,5 @@
 import { ListMapSwitch } from '../components';
-import { render, fireEvent, screen } from '@testing-library/react';
+import { render, fireEvent, screen, act } from '@testing-library/react';
 import '@testing-library/jest-dom';
 
 describe('ListMapSwitch component', () => {
@@ -23,7 +23,9 @@ describe('ListMapSwitch component', () => {
   it('Sets the showMap variable', () => {
     setShowMap(false);
     render(<ListMapSwitch showMap={showMap} setShowMap={setShowMap} />);
-    fireEvent.click(screen.getByRole('button'));
+    act(() => {
+      fireEvent.click(screen.getByRole('button'));
+    })
     expect(showMap).toBe(true);
   })
 })

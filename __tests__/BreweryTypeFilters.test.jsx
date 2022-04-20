@@ -1,4 +1,4 @@
-import { render, fireEvent, screen } from '@testing-library/react';
+import { render, fireEvent, screen, act } from '@testing-library/react';
 import { BreweryTypeFilters } from '../components';
 
 describe('BreweryTypeFilters component', () => {
@@ -35,19 +35,31 @@ describe('BreweryTypeFilters component', () => {
   it('Changes state with checkbox', () => {
     render(<BreweryTypeFilters typeFilters={typeFilterState} setMicroState={setMicroState} setBrewpubState={setBrewpubState} setContractState={setContractState} setLargeState={setLargeState} setRegionalState={setRegionalState} />);
     const checkboxes = screen.getAllByRole('checkbox');
-    fireEvent.click(checkboxes[0]);
+    act(() => {
+      fireEvent.click(checkboxes[0]);
+    })
     expect(typeFilterState.micro).toBe(true);
-    fireEvent.click(checkboxes[1]);
+    act(() => {
+      fireEvent.click(checkboxes[1]);
+    })
     expect(typeFilterState.brewpub).toBe(true);
-    fireEvent.click(checkboxes[2]);
+    act(() => {
+      fireEvent.click(checkboxes[2]);
+    })
     expect(typeFilterState.contract).toBe(true);
-    fireEvent.click(checkboxes[1]);
+    act(() => {
+      fireEvent.click(checkboxes[1]);
+    })
     expect(typeFilterState.brewpub).toBe(false);
-    fireEvent.click(checkboxes[3]);
-    fireEvent.click(checkboxes[4]);
+    act(() => {
+      fireEvent.click(checkboxes[3]);
+      fireEvent.click(checkboxes[4]);
+    })
     expect(typeFilterState.large).toBe(true);
     expect(typeFilterState.regional).toBe(true);
-    fireEvent.click(checkboxes[3]);
+    act(() => {
+      fireEvent.click(checkboxes[3]);
+    })
     expect(typeFilterState.large).toBe(false);
   })
 })

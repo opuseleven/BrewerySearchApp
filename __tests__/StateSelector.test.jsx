@@ -1,4 +1,4 @@
-import { render, fireEvent, screen } from '@testing-library/react';
+import { render, fireEvent, screen, act } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import { StateSelector } from '../components';
 
@@ -19,7 +19,9 @@ describe('StateSelector component', () => {
   it('Changes state value', () => {
     render(<StateSelector setStateFilter={setState} />);
     const selector = screen.getByRole('combobox');
-    fireEvent.change(selector, {target: {value: "alaska"}});
+    act(() => {
+      fireEvent.change(selector, {target: {value: "alaska"}});
+    })
     expect(state).toBe('alaska');
   })
 })

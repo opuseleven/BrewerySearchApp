@@ -1,5 +1,5 @@
 import { Filters } from '../components';
-import { render, fireEvent, screen } from '@testing-library/react';
+import { render, fireEvent, screen, act } from '@testing-library/react';
 import '@testing-library/jest-dom';
 
 describe('Filters component', () => {
@@ -29,15 +29,21 @@ describe('Filters component', () => {
 
   it('Changes both state and type variables', () => {
     render(<Filters setStateFilter={setState} typeFilterState={type} setTypeFilterState={setType} />);
-    fireEvent.change(screen.getByRole('combobox'), {target: {value: "colorado"}});
+    act(() => {
+      fireEvent.change(screen.getByRole('combobox'), {target: {value: "colorado"}});
+    })
     expect(screen.getByRole('combobox').value).toBe('colorado');
     expect(state).toBe('colorado');
     const checkboxes = screen.getAllByRole('checkbox');
-    fireEvent.click(checkboxes[0]);
+    act(() => {
+      fireEvent.click(checkboxes[0]);
+    })
     expect(screen.getByRole('combobox').value).toBe('colorado');
     expect(checkboxes[0].value).toBe('on');
     expect(type.micro).toBe(true);
-    fireEvent.click(checkboxes[0]);
+    act(() => {
+      fireEvent.click(checkboxes[0]);
+    })
     expect(type.micro).toBe(false);
   })
 
