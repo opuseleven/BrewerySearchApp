@@ -31,6 +31,8 @@ const MapContainer: React.FC<MapContainerProps> = ({ arr, selectedBrewery, setSe
     if (arr) {
       setDisplayedBreweries(arr);
       setSelectedBrewery(arr[0]);
+    } else {
+      setSelectedBrewery(defaultBrewery);
     }
   }, [arr])
 
