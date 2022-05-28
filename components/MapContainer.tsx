@@ -6,10 +6,12 @@ import { Brewery } from '../types';
 import { BreweryError } from '../errors';
 
 interface MapContainerProps {
-  arr: Brewery[]
+  arr: Brewery[],
+  selectedBrewery: Brewery | undefined,
+  setSelectedBrewery: React.Dispatch<React.SetStateAction<Brewery | undefined>>
 }
 
-const MapContainer: React.FC<MapContainerProps> = ({ arr }) => {
+const MapContainer: React.FC<MapContainerProps> = ({ arr, selectedBrewery, setSelectedBrewery }) => {
 
   const accessToken = process.env.ACCESSTOKEN;
   let defaultCenter = [-86.767960, 36.174465];
@@ -28,12 +30,17 @@ const MapContainer: React.FC<MapContainerProps> = ({ arr }) => {
   useEffect(() => {
     if (arr) {
       setDisplayedBreweries(arr);
-      defaultBrewery = displayedBreweries[0];
+      setSelectedBrewery(arr[0]);
     }
   }, [arr])
 
-  const [selectedBrewery, setSelectedBrewery] = useState(defaultBrewery);
+  const [brewery, setBrewery] = useState(selectedBrewery);
   const [showPopup, setShowPopup] = useState(false);
+
+  useEffect(() => {
+    setBrewery(selectedBrewery);
+    setShowPopup(true);
+  }, [selectedBrewery])
 
   function handleClick(brewery: Brewery) {
     setShowPopup(false);
@@ -74,7 +81,7 @@ const MapContainer: React.FC<MapContainerProps> = ({ arr }) => {
           {
             selectedBrewery && (
               <div>
-                <RenderPopup brewery={selectedBrewery} showPopup={showPopup}
+                <RenderPopup brewery={brewery} showPopup={showPopup}
                   setShowPopup={setShowPopup} />
               </div>
             )

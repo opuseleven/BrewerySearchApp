@@ -12,6 +12,7 @@ const Home: NextPage = () => {
   const [displayedBreweries, setDisplayedBreweries] = useState<Brewery[]>([]);
   const [showFilters, setShowFilters] = useState(false);
   const [showMap, setShowMap] = useState(false);
+  const [selectedBrewery, setSelectedBrewery] = useState<Brewery>();
 
   const defaultTypeFilter: TypeFilterState = {
     micro: false,
@@ -83,7 +84,8 @@ const Home: NextPage = () => {
         <div>
           {
             showMap && (
-              <MapContainer arr={displayedBreweries} />
+              <MapContainer arr={displayedBreweries} selectedBrewery={selectedBrewery}
+                setSelectedBrewery={setSelectedBrewery} />
             )
           }
         </div>
@@ -92,7 +94,7 @@ const Home: NextPage = () => {
           {
             displayedBreweries && (
               displayedBreweries.map(b => (
-                <RenderBrewery brewery={b} />
+                <RenderBrewery brewery={b} selectedBrewery={selectedBrewery} />
               ))
             )
           }
