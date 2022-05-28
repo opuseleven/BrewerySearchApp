@@ -1,6 +1,13 @@
 import styles from '../styles/Components.module.css';
+import { useState, useEffect } from 'react';
+import { Brewery } from '../types';
 
-function RenderBrewery({ brewery }) {
+interface RenderBreweryProps {
+  brewery: Brewery,
+  selectedBrewery: Brewery | undefined
+}
+
+const RenderBrewery: React.FC<RenderBreweryProps> = ({ brewery, selectedBrewery }) => {
 
   const key = brewery.obdb_id;
   const name = brewery.name;
@@ -10,11 +17,26 @@ function RenderBrewery({ brewery }) {
   const state = brewery.state;
   const url = brewery.website_url;
 
+  const selectedTheme = styles.renderselectedbrewerycontainer;
+  const unselectedTheme = styles.renderbrewerycontainer;
+
+  const [currentTheme, setCurrentTheme] = useState(unselectedTheme);
+
+  useEffect(() => {
+    if (selectedBrewery) {
+      if (brewery.name === selectedBrewery.name) {
+        setCurrentTheme(selectedTheme);
+      } else {
+        setCurrentTheme(unselectedTheme);
+      }
+    }
+  }, [selectedBrewery])
+
   return (
     <div>
     {
       brewery && (
-        <div className={styles.renderbrewerycontainer} key={key}>
+        <div className={currentTheme} key={key}>
           <div className={styles.renderbrewerycontents}>
             <h3>{name}</h3>
             <div className={styles.brewerydetails}>
