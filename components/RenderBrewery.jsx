@@ -21,7 +21,7 @@ function RenderBrewery({ brewery }) {
               <p className={styles.detailtype}>Brewery Type: {type}</p>
               <p>{street}</p>
               <p>{city}, {state}</p>
-              <p><a href={url}>{url}</a></p>
+              <p><a href={url} target="_blank">{url}</a></p>
             </div>
           </div>
         </div>
