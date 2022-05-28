@@ -1,5 +1,6 @@
-import Map from 'react-map-gl';
-import { RenderBreweryMap } from '.';
+import Map, { Marker } from 'react-map-gl';
+import { RenderPopup } from '.';
+import { useState, useEffect } from 'react';
 import 'mapbox-gl/dist/mapbox-gl.css';
 
 function MapContainer({ arr }) {
@@ -8,6 +9,26 @@ function MapContainer({ arr }) {
   let defaultCenter = [-86.767960, 36.174465];
   if (arr.length > 0) {
     defaultCenter = [arr[0].longitude, arr[0].latitude];
+  }
+
+  const [displayedBreweries, setDisplayedBreweries] = useState(arr);
+
+  let defaultBrewery;
+
+  useEffect(() => {
+    if (arr) {
+      setDisplayedBreweries(arr);
+      defaultBrewery = displayedBreweries[0];
+    }
+  }, [arr])
+
+  const [selectedBrewery, setSelectedBrewery] = useState(defaultBrewery);
+  const [showPopup, setShowPopup] = useState(false);
+
+  function handleClick(brewery) {
+    setShowPopup(false);
+    setSelectedBrewery(brewery);
+    setShowPopup(true);
   }
 
   return (
@@ -22,13 +43,33 @@ function MapContainer({ arr }) {
         mapStyle="mapbox://styles/mapbox/streets-v9"
         mapboxAccessToken={accessToken}
       >
-        {
-          arr && (
-            arr.map(b => (
-              <RenderBreweryMap brewery={b} />
-            ))
-          )
-        }
+        <div>
+          {
+            arr && (
+              displayedBreweries.map(b => (
+                <li key={b.obdb_id}>
+                  <Marker
+                    longitude={b.longitude}
+                    latitude={b.latitude}
+                    color='red'
+                    style={{ cursor: 'pointer' }}
+                    onClick={() => handleClick(b)}
+                  />
+                </li>
+              ))
+            )
+          }
+        </div>
+        <div>
+          {
+            selectedBrewery && (
+              <div>
+                <RenderPopup brewery={selectedBrewery} showPopup={showPopup}
+                  setShowPopup={setShowPopup} />
+              </div>
+            )
+          }
+        </div>
       </Map>
     </div>
   )
