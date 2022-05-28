@@ -26,6 +26,18 @@
 .renderbrewerycontainer a:hover {
   color: yellow;
 }
+.renderselectedbrewerycontainer {
+  border-style: solid;
+  border-color: red;
+  border-radius: 20px;
+  margin: 20px;
+}
+.renderselectedbrewerycontainer a{
+  color: white;
+}
+.renderselectedbrewerycontainer a:hover {
+  color: yellow;
+}
 
 .renderbrewerycontents {
   padding: 16px;
