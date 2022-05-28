@@ -1,5 +1,6 @@
 import { Popup } from 'react-map-gl';
 import { useState, useEffect } from 'react';
+import { PopupContents } from '.';
 
 function RenderPopup({ brewery, showPopup, setShowPopup }) {
 
@@ -7,7 +8,11 @@ function RenderPopup({ brewery, showPopup, setShowPopup }) {
 
   useEffect(() => {
     setPopup(showPopup);
-  }, [showPopup])
+  }, [brewery, showPopup])
+
+  function handleClose() {
+    setShowPopup(false);
+  }
 
   return (
     <div role="popup">
@@ -17,9 +22,9 @@ function RenderPopup({ brewery, showPopup, setShowPopup }) {
             longitude={brewery.longitude}
             latitude={brewery.latitude}
             anchor="top"
-            onClose={() => setShowPopup(false)}
+            onClose={() => handleClose}
           >
-            {brewery.name}
+            <PopupContents brewery={brewery} />
           </Popup>)
       }
     </div>
