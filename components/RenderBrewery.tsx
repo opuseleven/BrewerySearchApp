@@ -4,10 +4,11 @@ import { Brewery } from '../types';
 
 interface RenderBreweryProps {
   brewery: Brewery,
-  selectedBrewery: Brewery | undefined
+  selectedBrewery: Brewery | undefined,
+  setSelectedBrewery: React.Dispatch<React.SetStateAction<Brewery | undefined>>
 }
 
-const RenderBrewery: React.FC<RenderBreweryProps> = ({ brewery, selectedBrewery }) => {
+const RenderBrewery: React.FC<RenderBreweryProps> = ({ brewery, selectedBrewery, setSelectedBrewery }) => {
 
   const key = brewery.obdb_id;
   const name = brewery.name;
@@ -32,12 +33,16 @@ const RenderBrewery: React.FC<RenderBreweryProps> = ({ brewery, selectedBrewery 
     }
   }, [selectedBrewery])
 
+  function handleClick() {
+    setSelectedBrewery(brewery);
+  }
+
   return (
     <div>
     {
       brewery && (
         <div className={currentTheme} key={key}>
-          <div className={styles.renderbrewerycontents}>
+          <div className={styles.renderbrewerycontents} onClick={() => handleClick()}>
             <h3>{name}</h3>
             <div className={styles.brewerydetails}>
               <p className={styles.detailtype}>Brewery Type: {type}</p>

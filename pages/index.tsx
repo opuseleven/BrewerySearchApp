@@ -94,7 +94,7 @@ const Home: NextPage = () => {
           {
             displayedBreweries && (
               displayedBreweries.map(b => (
-                <RenderBrewery brewery={b} selectedBrewery={selectedBrewery} />
+                <RenderBrewery brewery={b} selectedBrewery={selectedBrewery} setSelectedBrewery={setSelectedBrewery} />
               ))
             )
           }
