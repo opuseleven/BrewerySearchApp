@@ -43,3 +43,10 @@
   padding-top: 10px;
   padding-bottom: 10px;
 }
+
+.popupcontents {
+  color: black;
+}
+.popupcontents a:hover {
+  color: yellow;
+}
