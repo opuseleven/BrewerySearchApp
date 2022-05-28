@@ -2,18 +2,28 @@ import Map, { Marker } from 'react-map-gl';
 import { RenderPopup } from '.';
 import { useState, useEffect } from 'react';
 import 'mapbox-gl/dist/mapbox-gl.css';
+import { Brewery } from '../types';
+import { BreweryError } from '../errors';
 
-function MapContainer({ arr }) {
+interface MapContainerProps {
+  arr: Brewery[]
+}
+
+const MapContainer: React.FC<MapContainerProps> = ({ arr }) => {
 
   const accessToken = process.env.ACCESSTOKEN;
   let defaultCenter = [-86.767960, 36.174465];
   if (arr.length > 0) {
-    defaultCenter = [arr[0].longitude, arr[0].latitude];
+    if (arr[0].longitude) {
+      if (arr[0].latitude) {
+        defaultCenter = [arr[0].longitude, arr[0].latitude];
+      }
+    }
   }
 
   const [displayedBreweries, setDisplayedBreweries] = useState(arr);
 
-  let defaultBrewery;
+  let defaultBrewery: Brewery = BreweryError();
 
   useEffect(() => {
     if (arr) {
@@ -25,7 +35,7 @@ function MapContainer({ arr }) {
   const [selectedBrewery, setSelectedBrewery] = useState(defaultBrewery);
   const [showPopup, setShowPopup] = useState(false);
 
-  function handleClick(brewery) {
+  function handleClick(brewery: Brewery) {
     setShowPopup(false);
     setSelectedBrewery(brewery);
     setShowPopup(true);
