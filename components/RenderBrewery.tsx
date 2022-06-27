@@ -48,7 +48,7 @@ const RenderBrewery: React.FC<RenderBreweryProps> = ({ brewery, selectedBrewery,
               <p className={styles.detailtype}>Brewery Type: {type}</p>
               <p>{street}</p>
               <p>{city}, {state}</p>
-              <p><a href={url} target="_blank">{url}</a></p>
+              <p><a href={url} target="_blank" rel="noreferrer">{url}</a></p>
             </div>
           </div>
         </div>
