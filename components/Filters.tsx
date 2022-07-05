@@ -3,12 +3,18 @@ import { StateSelector, BreweryTypeFilters } from '../components';
 import { TypeFilterState } from '../types';
 import { useState } from 'react';
 
-function Filters({ setStateFilter, typeFilterState, setTypeFilterState }) {
+interface FiltersProps {
+  setStateFilter: React.Dispatch<React.SetStateAction<string>>,
+  typeFilterState: TypeFilterState,
+  setTypeFilterState: React.Dispatch<React.SetStateAction<TypeFilterState>>
+}
+
+const Filters: React.FC<FiltersProps> = ({ setStateFilter, typeFilterState, setTypeFilterState }) => {
 
   const [typeFilters, setTypeFilters] = useState(typeFilterState);
 
-  function updateMicro(bool) {
-    const newObject = {
+  function updateMicro(bool: boolean) {
+    const newObject: TypeFilterState = {
       micro: bool,
       brewpub: typeFilters.brewpub,
       contract: typeFilters.contract,
@@ -18,8 +24,8 @@ function Filters({ setStateFilter, typeFilterState, setTypeFilterState }) {
     setTypeFilters(newObject);
     setTypeFilterState(newObject);
   }
-  function updateBrewpub(bool) {
-    const newObject = {
+  function updateBrewpub(bool: boolean) {
+    const newObject: TypeFilterState = {
       micro: typeFilters.micro,
       brewpub: bool,
       contract: typeFilters.contract,
@@ -29,8 +35,8 @@ function Filters({ setStateFilter, typeFilterState, setTypeFilterState }) {
     setTypeFilters(newObject);
     setTypeFilterState(newObject);
   }
-  function updateContract(bool) {
-    const newObject = {
+  function updateContract(bool: boolean) {
+    const newObject: TypeFilterState = {
       micro: typeFilters.micro,
       brewpub: typeFilters.brewpub,
       contract: bool,
@@ -40,8 +46,8 @@ function Filters({ setStateFilter, typeFilterState, setTypeFilterState }) {
     setTypeFilters(newObject);
     setTypeFilterState(newObject);
   }
-  function updateLarge(bool) {
-    const newObject = {
+  function updateLarge(bool: boolean) {
+    const newObject: TypeFilterState = {
       micro: typeFilters.micro,
       brewpub: typeFilters.brewpub,
       contract: typeFilters.contract,
@@ -51,8 +57,8 @@ function Filters({ setStateFilter, typeFilterState, setTypeFilterState }) {
     setTypeFilters(newObject);
     setTypeFilterState(newObject);
   }
-  function updateRegional(bool) {
-    const newObject = {
+  function updateRegional(bool: boolean) {
+    const newObject: TypeFilterState = {
       micro: typeFilters.micro,
       brewpub: typeFilters.brewpub,
       contract: typeFilters.contract,
