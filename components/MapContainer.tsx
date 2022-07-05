@@ -81,7 +81,7 @@ const MapContainer: React.FC<MapContainerProps> = ({ arr, selectedBrewery, setSe
         </div>
         <div>
           {
-            selectedBrewery && (
+            selectedBrewery && brewery && (
               <div>
                 <RenderPopup brewery={brewery} showPopup={showPopup}
                   setShowPopup={setShowPopup} />
