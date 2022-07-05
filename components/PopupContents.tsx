@@ -1,6 +1,11 @@
 import styles from '../styles/Components.module.css';
+import { Brewery } from '../types';
 
-function PopupContents({ brewery }) {
+interface PopupContentsProps {
+  brewery: Brewery
+}
+
+const PopupContents: React.FC<PopupContentsProps> = ({ brewery }) => {
   return (
     <div className={styles.popupcontents}>
       <h4>{brewery.name}</h4>
