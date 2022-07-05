@@ -1,8 +1,15 @@
 import { Popup } from 'react-map-gl';
 import { useState, useEffect } from 'react';
 import { PopupContents } from '.';
+import { Brewery } from '../types';
 
-function RenderPopup({ brewery, showPopup, setShowPopup }) {
+interface RenderPopupProps {
+  brewery: Brewery,
+  showPopup: boolean,
+  setShowPopup: React.Dispatch<React.SetStateAction<boolean>>
+}
+
+const RenderPopup: React.FC<RenderPopupProps> = ({ brewery, showPopup, setShowPopup }) => {
 
   const [popup, setPopup] = useState(showPopup);
 
@@ -19,8 +26,8 @@ function RenderPopup({ brewery, showPopup, setShowPopup }) {
       {
         popup && (
           <Popup
-            longitude={brewery.longitude}
-            latitude={brewery.latitude}
+            longitude={brewery.longitude ? brewery.longitude : -1}
+            latitude={brewery.latitude ? brewery.latitude : -1}
             anchor="top"
             onClose={() => handleClose}
           >
