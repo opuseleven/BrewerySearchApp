@@ -1,7 +1,12 @@
 import styles from '../styles/Components.module.css';
 import { useState, useEffect } from 'react';
 
-function ListMapSwitch({ showMap, setShowMap }) {
+interface ListMapSwitchProps {
+  showMap: boolean,
+  setShowMap: React.Dispatch<React.SetStateAction<boolean>>
+}
+
+const ListMapSwitch: React.FC<ListMapSwitchProps> = ({ showMap, setShowMap }) => {
 
   const [map, setMap] = useState(showMap);
   const [status, setStatus] = useState(getStatus(map));
@@ -12,7 +17,7 @@ function ListMapSwitch({ showMap, setShowMap }) {
     setMap(!map);
   }
 
-  function getStatus(bool) {
+  function getStatus(bool: boolean) {
     if (bool) {
       return "Hide";
     } else {
