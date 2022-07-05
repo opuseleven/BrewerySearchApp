@@ -1,7 +1,17 @@
 import styles from '../styles/Components.module.css';
+import { TypeFilterState } from '../types';
 import { useState } from 'react';
 
-function BreweryTypeFilters({ typeFilters, setMicroState, setBrewpubState, setContractState, setLargeState, setRegionalState }) {
+interface BreweryTypeFiltersProps {
+  typeFilters: TypeFilterState,
+  setMicroState: (bool: boolean) => void,
+  setBrewpubState: (bool: boolean) => void,
+  setContractState: (bool: boolean) => void,
+  setLargeState: (bool: boolean) => void,
+  setRegionalState: (bool: boolean) => void
+}
+
+const BreweryTypeFilters: React.FC<BreweryTypeFiltersProps> = ({ typeFilters, setMicroState, setBrewpubState, setContractState, setLargeState, setRegionalState }) => {
 
   const [micro, setMicro] = useState(typeFilters.micro);
   const [brewpub, setBrewpub] = useState(typeFilters.brewpub);
