@@ -71,7 +71,7 @@ const Filters: React.FC<FiltersProps> = ({ setStateFilter, typeFilterState, setT
 
   return (
     <div className={styles.filterscontainer}>
-      <div>
+      <div className={styles.stateselectorcontainer}>
         <StateSelector setStateFilter={setStateFilter} />
       </div>
 
