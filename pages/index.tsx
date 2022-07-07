@@ -62,7 +62,7 @@ const Home: NextPage = () => {
           </div>
           <div>
             <div>
-              <button onClick={() => setShowFilters(!showFilters)}>Filters</button>
+              <button onClick={() => setShowFilters(!showFilters)}>Filters  {showFilters ? String.fromCharCode(9662) : String.fromCharCode(9656)}</button>
             </div>
             {
               showFilters && (
