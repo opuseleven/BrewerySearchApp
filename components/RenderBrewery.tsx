@@ -5,10 +5,11 @@ import { Brewery } from '../types';
 interface RenderBreweryProps {
   brewery: Brewery,
   selectedBrewery: Brewery | undefined,
-  setSelectedBrewery: React.Dispatch<React.SetStateAction<Brewery | undefined>>
+  setSelectedBrewery: React.Dispatch<React.SetStateAction<Brewery | undefined>>,
+  darkMode: boolean
 }
 
-const RenderBrewery: React.FC<RenderBreweryProps> = ({ brewery, selectedBrewery, setSelectedBrewery }) => {
+const RenderBrewery: React.FC<RenderBreweryProps> = ({ brewery, selectedBrewery, setSelectedBrewery, darkMode }) => {
 
   const key = brewery.obdb_id;
   const name = brewery.name;
@@ -19,7 +20,7 @@ const RenderBrewery: React.FC<RenderBreweryProps> = ({ brewery, selectedBrewery,
   const url = brewery.website_url;
 
   const selectedTheme = styles.renderselectedbrewerycontainer;
-  const unselectedTheme = styles.renderbrewerycontainer;
+  const unselectedTheme = darkMode ? styles.renderbrewerycontainerdark : styles.renderbrewerycontainer;
 
   const [currentTheme, setCurrentTheme] = useState(unselectedTheme);
 
@@ -31,7 +32,7 @@ const RenderBrewery: React.FC<RenderBreweryProps> = ({ brewery, selectedBrewery,
         setCurrentTheme(unselectedTheme);
       }
     }
-  }, [selectedBrewery])
+  }, [selectedBrewery, darkMode])
 
   function handleClick() {
     setSelectedBrewery(brewery);
