@@ -7,3 +7,4 @@ export * from './ListMapSwitch';
 export * from './MapContainer';
 export * from './RenderPopup';
 export * from './PopupContents';
+export * from './DarkModeButton';
