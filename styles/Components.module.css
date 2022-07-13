@@ -35,16 +35,30 @@
 
 .renderbrewerycontainer {
   border-style: solid;
-  border-color: white;
+  border-color: black;
   border-radius: 20px;
   margin: 20px;
 }
 .renderbrewerycontainer a{
-  color: white;
+  color: black;
 }
 .renderbrewerycontainer a:hover {
   color: yellow;
 }
+
+.renderbrewerycontainerdark {
+  border-style: solid;
+  border-color: white;
+  border-radius: 20px;
+  margin: 20px;
+}
+.renderbrewerycontainerdark a{
+  color: white;
+}
+.renderbrewerycontainerdark a:hover{
+  color: yellow;
+}
+
 .renderselectedbrewerycontainer {
   border-style: solid;
   border-color: red;
@@ -52,7 +66,7 @@
   margin: 20px;
 }
 .renderselectedbrewerycontainer a{
-  color: white;
+  color: inherit;
 }
 .renderselectedbrewerycontainer a:hover {
   color: yellow;
