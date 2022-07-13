@@ -91,7 +91,8 @@ const Home: NextPage = () => {
             displayedBreweries && (
               displayedBreweries.map(b => (
                 <div key={b.obdb_id ? b.obdb_id.toString() : null}>
-                  <RenderBrewery brewery={b} selectedBrewery={selectedBrewery} setSelectedBrewery={setSelectedBrewery} />
+                  <RenderBrewery brewery={b} selectedBrewery={selectedBrewery}
+                    setSelectedBrewery={setSelectedBrewery} darkMode={darkMode} />
                 </div>
               ))
             )
