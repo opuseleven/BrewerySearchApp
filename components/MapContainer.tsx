@@ -8,10 +8,11 @@ import { BreweryError } from '../errors';
 interface MapContainerProps {
   arr: Brewery[],
   selectedBrewery: Brewery | undefined,
-  setSelectedBrewery: React.Dispatch<React.SetStateAction<Brewery | undefined>>
+  setSelectedBrewery: React.Dispatch<React.SetStateAction<Brewery | undefined>>,
+  darkMode: boolean
 }
 
-const MapContainer: React.FC<MapContainerProps> = ({ arr, selectedBrewery, setSelectedBrewery }) => {
+const MapContainer: React.FC<MapContainerProps> = ({ arr, selectedBrewery, setSelectedBrewery, darkMode }) => {
 
   const accessToken = process.env.ACCESSTOKEN;
   let defaultCenter = [-86.767960, 36.174465];
@@ -59,7 +60,7 @@ const MapContainer: React.FC<MapContainerProps> = ({ arr, selectedBrewery, setSe
           zoom: 8,
           }}
         style={{width: 600, height: 400}}
-        mapStyle="mapbox://styles/mapbox/streets-v9"
+        mapStyle={darkMode ? "mapbox://styles/mapbox/dark-v10" : "mapbox://styles/mapbox/streets-v9"}
         mapboxAccessToken={accessToken}
       >
         <div>
