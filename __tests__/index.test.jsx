@@ -9,7 +9,8 @@ describe('Home Page', () => {
     const buttons = screen.getAllByRole('button');
     expect(buttons[0]).toHaveTextContent('Submit');
     expect(buttons[1]).toHaveTextContent('Filter');
-    expect(buttons[2]).toHaveTextContent('Show Map');
+    expect(buttons[2]).toHaveTextContent('☾');
+    expect(buttons[3]).toHaveTextContent('Show Map');
   })
 
   it('UI functions to run application', async () => {
@@ -20,7 +21,7 @@ describe('Home Page', () => {
       fireEvent.change(textbox, {target: {value: 'nashville'}});
       fireEvent.click(buttons[0]);
       await new Promise(r => setTimeout(r, 3000));
-      fireEvent.click(buttons[2]);
+      fireEvent.click(buttons[3]);
       await new Promise(r => setTimeout(r, 1000));
     })
     expect(screen.getByRole('map')).toBeDefined();
