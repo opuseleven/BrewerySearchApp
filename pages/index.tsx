@@ -3,7 +3,7 @@ import Head from 'next/head'
 import styles from '../styles/Home.module.css'
 import { Brewery, TypeFilterState, defaultTypeFilterState } from '../types';
 import { useState, useEffect } from 'react';
-import { SearchForm, RenderBrewery, Filters, ListMapSwitch, MapContainer } from '../components';
+import { SearchForm, RenderBrewery, Filters, ListMapSwitch, MapContainer, DarkModeButton } from '../components';
 import { filterByType, typeFilterCheck, filterByHasCoordinates } from '../services';
 
 const Home: NextPage = () => {
@@ -16,6 +16,7 @@ const Home: NextPage = () => {
 
   const [typeFilterState, setTypeFilterState] = useState<TypeFilterState>(defaultTypeFilterState);
   const [stateFilter, setStateFilter] = useState('');
+  const [darkMode, setDarkMode] = useState(true);
 
   useEffect(() => {
     const originalArray = breweries;
@@ -44,15 +45,15 @@ const Home: NextPage = () => {
   }, [breweries, showMap]);
 
   return (
-    <div className={styles.container}>
+    <div className={darkMode ? styles.containerdark : styles.container}>
       <Head>
         <title>BrewerySearch</title>
         <meta name="description" content="Search a database of breweries" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className={styles.main}>
-        <h1 className={styles.title}>
+      <main className={darkMode ? styles.maindark : styles.main}>
+        <h1 className={darkMode ? styles.titledark : styles.title}>
           BrewerySearch
         </h1>
 
@@ -61,8 +62,11 @@ const Home: NextPage = () => {
             <SearchForm setBreweries={setBreweries} setShowMap={setShowMap} />
           </div>
           <div>
-            <div>
-              <button onClick={() => setShowFilters(!showFilters)}>Filters  {showFilters ? String.fromCharCode(9662) : String.fromCharCode(9656)}</button>
+            <div className={styles.buttonscontainer}>
+              <button onClick={() => setShowFilters(!showFilters)}>
+                Filters  {showFilters ? String.fromCharCode(9662) : String.fromCharCode(9656)}
+              </button>
+              <DarkModeButton darkMode={darkMode} setDarkMode={setDarkMode} />
             </div>
             {
               showFilters && (
