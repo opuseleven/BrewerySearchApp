@@ -1,15 +1,16 @@
 import styles from '../styles/Components.module.css';
-import { useState, useEffect } from 'react';
+import { FC, Dispatch, SetStateAction, useState, useEffect } from 'react';
 import { Brewery } from '../types';
 
 interface RenderBreweryProps {
   brewery: Brewery,
   selectedBrewery: Brewery | undefined,
-  setSelectedBrewery: React.Dispatch<React.SetStateAction<Brewery | undefined>>,
+  setSelectedBrewery: Dispatch<SetStateAction<Brewery | undefined>>,
   darkMode: boolean
 }
 
-const RenderBrewery: React.FC<RenderBreweryProps> = ({ brewery, selectedBrewery, setSelectedBrewery, darkMode }) => {
+const RenderBrewery: FC<RenderBreweryProps> =
+  ({ brewery, selectedBrewery, setSelectedBrewery, darkMode }) => {
 
   const key = brewery.obdb_id;
   const name = brewery.name;
