@@ -1,6 +1,6 @@
 import Map, { Marker } from 'react-map-gl';
 import { RenderPopup } from '.';
-import { useState, useEffect } from 'react';
+import { FC, Dispatch, SetStateAction, useState, useEffect } from 'react';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import { Brewery } from '../types';
 import { BreweryError } from '../errors';
@@ -8,11 +8,12 @@ import { BreweryError } from '../errors';
 interface MapContainerProps {
   arr: Brewery[],
   selectedBrewery: Brewery | undefined,
-  setSelectedBrewery: React.Dispatch<React.SetStateAction<Brewery | undefined>>,
+  setSelectedBrewery: Dispatch<SetStateAction<Brewery | undefined>>,
   darkMode: boolean
 }
 
-const MapContainer: React.FC<MapContainerProps> = ({ arr, selectedBrewery, setSelectedBrewery, darkMode }) => {
+const MapContainer: FC<MapContainerProps> =
+  ({ arr, selectedBrewery, setSelectedBrewery, darkMode }) => {
 
   const accessToken = process.env.ACCESSTOKEN;
   let defaultCenter = [-86.767960, 36.174465];
