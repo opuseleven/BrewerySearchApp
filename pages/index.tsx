@@ -53,27 +53,35 @@ const Home: NextPage = () => {
       </Head>
 
       <main className={darkMode ? styles.maindark : styles.main}>
+
         <h1 className={darkMode ? styles.titledark : styles.title}>
           BrewerySearch
         </h1>
 
         <div>
+
           <div>
             <SearchForm setBreweries={setBreweries} setShowMap={setShowMap} />
           </div>
+
           <div>
             <div className={styles.buttonscontainer}>
+
               <button onClick={() => setShowFilters(!showFilters)}>
                 Filters  {showFilters ? String.fromCharCode(9662) : String.fromCharCode(9656)}
               </button>
+
               <DarkModeButton darkMode={darkMode} setDarkMode={setDarkMode} />
+
             </div>
             {
               showFilters && (
-                <Filters setStateFilter={setStateFilter} typeFilterState={typeFilterState} setTypeFilterState={setTypeFilterState} />
+                <Filters setStateFilter={setStateFilter} typeFilterState={typeFilterState}
+                  setTypeFilterState={setTypeFilterState} />
               )
             }
           </div>
+
           <ListMapSwitch showMap={showMap} setShowMap={setShowMap} />
         </div>
 
