@@ -1,7 +1,8 @@
 import { Brewery } from '../types';
 import axios, { AxiosResponse } from 'axios';
+import { Dispatch, SetStateAction } from 'react';
 
-function handleSearchClick(searchTerm: string, setBreweries: React.Dispatch<React.SetStateAction<Brewery[]>>) {
+function handleSearchClick(searchTerm: string, setBreweries: Dispatch<SetStateAction<Brewery[]>>) {
 
   const options = {
     method: 'GET',
