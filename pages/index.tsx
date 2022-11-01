@@ -81,7 +81,7 @@ const Home: NextPage = () => {
           {
             showMap && (
               <MapContainer arr={displayedBreweries} selectedBrewery={selectedBrewery}
-                setSelectedBrewery={setSelectedBrewery} />
+                setSelectedBrewery={setSelectedBrewery} darkMode={darkMode} />
             )
           }
         </div>
