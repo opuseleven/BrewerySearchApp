@@ -1,15 +1,15 @@
 import { Popup } from 'react-map-gl';
-import { useState, useEffect } from 'react';
+import { FC, Dispatch, SetStateAction, useState, useEffect } from 'react';
 import { PopupContents } from '.';
 import { Brewery } from '../types';
 
 interface RenderPopupProps {
   brewery: Brewery,
   showPopup: boolean,
-  setShowPopup: React.Dispatch<React.SetStateAction<boolean>>
+  setShowPopup: Dispatch<SetStateAction<boolean>>
 }
 
-const RenderPopup: React.FC<RenderPopupProps> = ({ brewery, showPopup, setShowPopup }) => {
+const RenderPopup: FC<RenderPopupProps> = ({ brewery, showPopup, setShowPopup }) => {
 
   const [popup, setPopup] = useState(showPopup);
 
