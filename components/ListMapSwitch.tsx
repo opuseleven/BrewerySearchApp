@@ -1,12 +1,12 @@
 import styles from '../styles/Components.module.css';
-import { useState, useEffect } from 'react';
+import { FC, Dispatch, SetStateAction, useState, useEffect } from 'react';
 
 interface ListMapSwitchProps {
   showMap: boolean,
-  setShowMap: React.Dispatch<React.SetStateAction<boolean>>
+  setShowMap: Dispatch<SetStateAction<boolean>>
 }
 
-const ListMapSwitch: React.FC<ListMapSwitchProps> = ({ showMap, setShowMap }) => {
+const ListMapSwitch: FC<ListMapSwitchProps> = ({ showMap, setShowMap }) => {
 
   const [map, setMap] = useState(showMap);
   const [status, setStatus] = useState(getStatus(map));
