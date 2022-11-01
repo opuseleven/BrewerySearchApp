@@ -2,6 +2,7 @@ import { filterByHasCoordinates } from '../services';
 import { Brewery } from '../types';
 
 describe('filterByHasCoordinates service', () => {
+  
   const b1: Brewery = {
     obdb_id: 1,
     name: "Test Brewery",
