@@ -20,14 +20,14 @@ describe('Filters component', () => {
     type = obj;
   }
 
-  it('Renders', () => {
+  it('Component renders', () => {
     render(<Filters setStateFilter={setState} typeFilterState={type} setTypeFilterState={setType} />);
     expect(screen.getByRole('combobox')).toHaveTextContent('--select state--');
     const checkboxes = screen.getAllByRole('checkbox');
     expect(checkboxes[1].id).toBe('brewpub');
     })
 
-  it('Changes both state and type variables', () => {
+  it('Component functions to change both state and type variables', () => {
     render(<Filters setStateFilter={setState} typeFilterState={type} setTypeFilterState={setType} />);
     act(() => {
       fireEvent.change(screen.getByRole('combobox'), {target: {value: "colorado"}});
