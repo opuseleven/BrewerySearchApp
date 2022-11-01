@@ -1,15 +1,15 @@
 import styles from '../styles/Components.module.css';
 import { StateSelector, BreweryTypeFilters } from '../components';
 import { TypeFilterState } from '../types';
-import { useState } from 'react';
+import { FC, Dispatch, SetStateAction, useState } from 'react';
 
 interface FiltersProps {
-  setStateFilter: React.Dispatch<React.SetStateAction<string>>,
+  setStateFilter: Dispatch<SetStateAction<string>>,
   typeFilterState: TypeFilterState,
-  setTypeFilterState: React.Dispatch<React.SetStateAction<TypeFilterState>>
+  setTypeFilterState: Dispatch<SetStateAction<TypeFilterState>>
 }
 
-const Filters: React.FC<FiltersProps> = ({ setStateFilter, typeFilterState, setTypeFilterState }) => {
+const Filters: FC<FiltersProps> = ({ setStateFilter, typeFilterState, setTypeFilterState }) => {
 
   const [typeFilters, setTypeFilters] = useState(typeFilterState);
 
@@ -71,12 +71,17 @@ const Filters: React.FC<FiltersProps> = ({ setStateFilter, typeFilterState, setT
 
   return (
     <div className={styles.filterscontainer}>
+
       <div className={styles.stateselectorcontainer}>
         <StateSelector setStateFilter={setStateFilter} />
       </div>
 
       <div>
-        <BreweryTypeFilters typeFilters={typeFilters} setMicroState={updateMicro} setBrewpubState={updateBrewpub} setContractState={updateContract} setLargeState={updateLarge} setRegionalState={updateRegional} />
+
+        <BreweryTypeFilters typeFilters={typeFilters} setMicroState={updateMicro}
+          setBrewpubState={updateBrewpub} setContractState={updateContract}
+          setLargeState={updateLarge} setRegionalState={updateRegional} />
+
       </div>
     </div>
   )
