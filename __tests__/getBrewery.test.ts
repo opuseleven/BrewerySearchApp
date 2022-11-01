@@ -1,8 +1,9 @@
 import { getBrewery } from '../services';
+import { Brewery } from '../types';
 
 describe('getBrewery function', () => {
 
-  const expectedBrewery = {
+  const expectedBrewery: Brewery = {
     obdb_id: 1,
     name: "Test Brewery",
     brewery_type: "Microbrewery",
