@@ -1,4 +1,5 @@
 import { Brewery } from '../types';
+import { BreweryError } from '../errors';
 import axios, { AxiosResponse } from 'axios';
 import { Dispatch, SetStateAction } from 'react';
 
@@ -16,8 +17,12 @@ function handleSearchClick(searchTerm: string, setBreweries: Dispatch<SetStateAc
   const testUrl = 'api/breweries';
   // testUrl gets full list of breweries from breweries.json
 
+  const error = BreweryError();
+  const errorArr = [error];
+
   axios
     .get<Brewery[]>(requestUrl)
-    .then((response: AxiosResponse<Brewery[]>) => setBreweries(response.data));
+    .then((response: AxiosResponse<Brewery[]>) => setBreweries(response.data))
+    .catch(() => setBreweries(errorArr));
 }
 export { handleSearchClick };
