@@ -1,12 +1,13 @@
 import styles from '../styles/Components.module.css';
+import { FC, Dispatch, SetStateAction, ChangeEvent } from 'react';
 
 interface StateSelectorProps {
-  setStateFilter: React.Dispatch<React.SetStateAction<string>>
+  setStateFilter: Dispatch<SetStateAction<string>>
 }
 
-const StateSelector: React.FC<StateSelectorProps> = ({ setStateFilter }) => {
+const StateSelector: FC<StateSelectorProps> = ({ setStateFilter }) => {
 
-  function handleChange(e: React.ChangeEvent<HTMLSelectElement>) {
+  function handleChange(e: ChangeEvent<HTMLSelectElement>) {
     setStateFilter(e.target.value);
   }
 
