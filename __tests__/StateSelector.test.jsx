@@ -9,14 +9,14 @@ describe('StateSelector component', () => {
     state = s;
   }
 
-  it('Renders', () => {
+  it('Component renders', () => {
     render(<StateSelector />);
     const options = screen.getAllByRole('option');
     expect(options[0]).toHaveTextContent('--select state--');
     expect(options[1]).toHaveTextContent('Alabama');
   })
 
-  it('Changes state value', () => {
+  it('Component functions to change state value', () => {
     render(<StateSelector setStateFilter={setState} />);
     const selector = screen.getByRole('combobox');
     act(() => {
