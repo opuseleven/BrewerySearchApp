@@ -1,14 +1,14 @@
-import { useState } from 'react';
+import { FC, Dispatch, SetStateAction, useState } from 'react';
 import { Brewery } from '../types';
 import styles from '../styles/Components.module.css';
 import { handleSearchClick } from '../services';
 
 interface SearchFormProps {
-  setBreweries: React.Dispatch<React.SetStateAction<Brewery[]>>,
-  setShowMap: React.Dispatch<React.SetStateAction<boolean>>
+  setBreweries: Dispatch<SetStateAction<Brewery[]>>,
+  setShowMap: Dispatch<SetStateAction<boolean>>
 }
 
-const SearchForm: React.FC<SearchFormProps> = ({ setBreweries, setShowMap }) => {
+const SearchForm: FC<SearchFormProps> = ({ setBreweries, setShowMap }) => {
 
   function useField(type: string) {
     const [value, setValue] = useState('');
