@@ -11,7 +11,9 @@ interface BreweryTypeFiltersProps {
   setRegionalState: (bool: boolean) => void
 }
 
-const BreweryTypeFilters: React.FC<BreweryTypeFiltersProps> = ({ typeFilters, setMicroState, setBrewpubState, setContractState, setLargeState, setRegionalState }) => {
+const BreweryTypeFilters: React.FC<BreweryTypeFiltersProps> =
+  ({ typeFilters, setMicroState, setBrewpubState, setContractState,
+    setLargeState, setRegionalState }) => {
 
   const [micro, setMicro] = useState(typeFilters.micro);
   const [brewpub, setBrewpub] = useState(typeFilters.brewpub);
@@ -51,18 +53,22 @@ const BreweryTypeFilters: React.FC<BreweryTypeFiltersProps> = ({ typeFilters, se
         <input type="checkbox" id="micro" checked={micro} onChange={handleMicroCheck} />
         <label htmlFor="micro">Microbrewery</label>
       </div>
+
       <div>
         <input type="checkbox" id="brewpub" checked={brewpub} onChange={handleBrewpubCheck} />
         <label htmlFor="brewpub">Brewpub</label>
       </div>
+
       <div>
         <input type="checkbox" id="contract" checked={contract} onChange={handleContractCheck} />
         <label htmlFor="contract">Contract</label>
       </div>
+
       <div>
         <input type="checkbox" id="large" checked={large} onChange={handleLargeCheck} />
         <label htmlFor="large">Large</label>
       </div>
+
       <div>
         <input type="checkbox" id="regional" checked={regional} onChange={handleRegionalCheck} />
         <label htmlFor="regional">Regional</label>
