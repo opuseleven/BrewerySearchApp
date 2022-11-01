@@ -1,11 +1,12 @@
 import styles from '../styles/Components.module.css';
+import { FC } from 'react';
 
 interface DarkModeButtonProps {
   darkMode: boolean,
   setDarkMode: React.Dispatch<React.SetStateAction<boolean>>
 }
 
-const DarkModeButton: React.FC<DarkModeButtonProps> = ({ darkMode, setDarkMode }) => {
+const DarkModeButton: FC<DarkModeButtonProps> = ({ darkMode, setDarkMode }) => {
 
   function handleClick() {
     setDarkMode(!darkMode);
@@ -13,9 +14,7 @@ const DarkModeButton: React.FC<DarkModeButtonProps> = ({ darkMode, setDarkMode }
 
   return (
     <div>
-      <button className={styles.darkmodebutton}
-        onClick={() => handleClick()}
-      >
+      <button className={styles.darkmodebutton} onClick={() => handleClick()}>
         {'\u263e'}
       </button>
     </div>
