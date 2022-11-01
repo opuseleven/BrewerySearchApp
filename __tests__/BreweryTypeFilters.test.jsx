@@ -26,13 +26,13 @@ describe('BreweryTypeFilters component', () => {
     typeFilterState.regional = bool;
   }
 
-  it('Renders', () => {
+  it('Component renders', () => {
     render(<BreweryTypeFilters typeFilters={typeFilterState} setMicroState={setMicroState} setBrewpubState={setBrewpubState} setContractState={setContractState} setLargeState={setLargeState} setRegionalState={setRegionalState} />);
     const checkboxes = screen.getAllByRole('checkbox');
     expect(checkboxes[0].id).toBe('micro');
   })
 
-  it('Changes state with checkbox', () => {
+  it('Component functions to change state with checkbox', () => {
     render(<BreweryTypeFilters typeFilters={typeFilterState} setMicroState={setMicroState} setBrewpubState={setBrewpubState} setContractState={setContractState} setLargeState={setLargeState} setRegionalState={setRegionalState} />);
     const checkboxes = screen.getAllByRole('checkbox');
     act(() => {
