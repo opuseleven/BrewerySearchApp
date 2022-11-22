@@ -110,6 +110,9 @@ const Home: NextPage = () => {
       </main>
 
       <footer className={styles.footer}>
+        <p className={darkMode ? styles.footertextdark : styles.footertext}>
+          Data provided by <a href={'https://www.openbrewerydb.org/'}>Open Brewery DB</a>
+        </p>
       </footer>
     </div>
   )
