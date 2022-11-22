@@ -11,7 +11,7 @@
 }
 
 .main {
-  min-height: 100vh;
+  min-height: 80vh;
   padding: 4rem 0;
   flex: 1;
   display: flex;
@@ -23,7 +23,7 @@
 }
 
 .maindark {
-  min-height: 100vh;
+  min-height: 80vh;
   padding: 4rem 0;
   flex: 1;
   display: flex;
@@ -67,4 +67,16 @@
   justify-content: center;
   align-items: center;
   flex-grow: 1;
+}
+
+.footer a:hover {
+  text-decoration: underline;
+}
+
+.footertext {
+  color: black;
+}
+
+.footertextdark {
+  color: white;
 }
