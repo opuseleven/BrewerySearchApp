@@ -111,7 +111,7 @@ const Home: NextPage = () => {
 
       <footer className={styles.footer}>
         <p className={darkMode ? styles.footertextdark : styles.footertext}>
-          Data provided by <a href={'https://www.openbrewerydb.org/'} target='_blank'>Open Brewery DB</a>
+          Data provided by <a href={'https://www.openbrewerydb.org/'} target='_blank' rel="noreferrer">Open Brewery DB</a>
         </p>
       </footer>
     </div>
