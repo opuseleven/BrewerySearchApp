@@ -3,7 +3,7 @@ import { BreweryError } from '../errors';
 import axios, { AxiosResponse } from 'axios';
 import { Dispatch, SetStateAction } from 'react';
 
-function handleSearchClick(searchTerm: string, setBreweries: Dispatch<SetStateAction<Brewery[]>>) {
+async function handleSearchClick(searchTerm: string, setBreweries: Dispatch<SetStateAction<Brewery[]>>) {
 
   const options = {
     method: 'GET',
@@ -20,9 +20,15 @@ function handleSearchClick(searchTerm: string, setBreweries: Dispatch<SetStateAc
   const error = BreweryError();
   const errorArr = [error];
 
-  axios
+  const source = axios.CancelToken.source();
+
+  await axios
     .get<Brewery[]>(requestUrl)
     .then((response: AxiosResponse<Brewery[]>) => setBreweries(response.data))
     .catch(() => setBreweries(errorArr));
+
+  return () => {
+    source.cancel();
+  }
 }
 export { handleSearchClick };
