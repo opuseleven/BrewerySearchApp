@@ -36,6 +36,9 @@
 
 .titledark {
   margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   line-height: 1.15;
   font-size: 4rem;
   color: white;
@@ -43,6 +46,9 @@
 
 .title {
   margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   line-height: 1.15;
   font-size: 4rem;
   color: black;

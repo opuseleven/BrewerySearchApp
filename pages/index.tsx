@@ -55,7 +55,7 @@ const Home: NextPage = () => {
       <main className={darkMode ? styles.maindark : styles.main}>
 
         <h1 className={darkMode ? styles.titledark : styles.title}>
-          BrewerySearch
+          <span>Brewery</span><span>Search</span>
         </h1>
 
         <div>
