@@ -70,8 +70,8 @@ const MapContainer: FC<MapContainerProps> =
               displayedBreweries.map(b => (
                 <li key={b.obdb_id}>
                   <Marker
-                    longitude={b.longitude}
-                    latitude={b.latitude}
+                    longitude={b.longitude ? b.longitude : 0}
+                    latitude={b.latitude ? b. latitude : 0}
                     color='red'
                     style={{ cursor: 'pointer' }}
                     onClick={() => handleClick(b)}
