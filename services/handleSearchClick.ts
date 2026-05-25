@@ -7,7 +7,7 @@ async function handleSearchClick(searchTerm: string, setBreweries: Dispatch<SetS
 
   const options = {
     method: 'GET',
-    url: 'https://api.openbrewerydb.org/breweries/search',
+    url: 'https://api.openbrewerydb.org/v1/breweries/search',
     params: {
       query: searchTerm
     }
