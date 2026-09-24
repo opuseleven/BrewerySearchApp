@@ -35,5 +35,10 @@
   },
   "resolutions": {
     "postcss": "8.5.15"
+  },
+  "allowScripts": {
+    "node@21.7.3": true,
+    "unrs-resolver@1.12.2": true,
+    "fsevents@2.3.3": true
   }
 }
